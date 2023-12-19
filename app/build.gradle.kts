@@ -1,3 +1,27 @@
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.net.HttpURLConnection
+import java.net.URL
+
+fun fetchJSON(urlStr: String): String {
+    val url = URL(urlStr)
+    val httpURLConnection = url.openConnection() as HttpURLConnection
+    val inputStream = httpURLConnection.inputStream
+    val bufferedReader = BufferedReader(InputStreamReader(inputStream))
+
+    var resultString = ""
+    var lineString: String? = ""
+    while (lineString != null) {
+        lineString = bufferedReader.readLine()
+        resultString += lineString
+    }
+
+    bufferedReader.close()
+    httpURLConnection.disconnect()
+
+    return resultString
+}
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -21,12 +45,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        // Get all known statements from shared repository
         resValue(
-            "string", "asset_statements", """
-           [{
-             "include": "https://nest-fido2.onrender.com/.well-known/assetlinks.json"
-           }]
-        """)
+            "string", "asset_statements", fetchJSON("https://raw.githubusercontent.com/awesome-algorand/registered-authenticators/main/asset_statements.json")
+        )
     }
     signingConfigs {
         getByName("debug") {
