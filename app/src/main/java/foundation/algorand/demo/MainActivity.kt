@@ -116,7 +116,7 @@ class MainActivity : AppCompatActivity() {
                 val msg = Message.fromBarcode(barcode)
                 // Add wallet to Message
                 msg.wallet = account.address.toString()
-
+                msg.credId = viewModel.credential.value?.id
                 // Optionally sign the message directly with a PrivateKey
                 // val signer = Signature.getInstance("EdDSA")
                 // signer.initSign(key)

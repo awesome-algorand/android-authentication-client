@@ -1,5 +1,6 @@
 package foundation.algorand.auth.fido2
 
+import android.util.Log
 import com.google.android.gms.fido.fido2.api.common.AuthenticatorAttestationResponse
 import com.google.android.gms.fido.fido2.api.common.PublicKeyCredential
 import com.google.android.gms.fido.fido2.api.common.PublicKeyCredentialType
@@ -48,6 +49,8 @@ class AttestationApi @Inject constructor(
     ): Call {
         val path = "$origin/attestation/request"
         val body = options.toString().toRequestBody("application/json".toMediaTypeOrNull())
+        Log.d("ST", "postAttestationOptions($path) - (${android.os.Build.MODEL})")
+        options.put("device", android.os.Build.MODEL)
         return client.newCall(
             Request.Builder()
                 .url(path)
@@ -80,7 +83,8 @@ class AttestationApi @Inject constructor(
         payload.put("id", rawId)
         payload.put("type", "${PublicKeyCredentialType.PUBLIC_KEY}")
         payload.put("rawId", rawId)
-
+        Log.d("ST", "postAttestationOptions($path) - (${android.os.Build.MODEL})")
+        payload.put("device", android.os.Build.MODEL)
         val jsonResponse = JSONObject()
         jsonResponse.put("clientDataJSON", response.clientDataJSON.toBase64())
         jsonResponse.put("attestationObject", response.attestationObject.toBase64())

@@ -13,6 +13,7 @@ class Message @Inject constructor(
     var origin: String,
     val challenge: String,
     val requestId: Double,
+    var credId: String? = null,
     var wallet: String? = null,
     var signature: String? = null
 ) {
@@ -47,6 +48,7 @@ class Message @Inject constructor(
         result.put("origin", origin)
         result.put("challenge", challenge)
         result.put("requestId", requestId)
+        result.put("credId", credId)
         result.put("wallet", wallet)
         result.put("signature", signature)
         return result
