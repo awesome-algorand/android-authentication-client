@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("foundation.algorand.auth", appContext.packageName)
+        assertEquals("foundation.algorand.auth.test", appContext.packageName)
     }
 }

@@ -79,7 +79,7 @@ android {
 }
 
 dependencies {
-    implementation(project(mapOf("path" to ":auth")))
+    implementation(project(mapOf("path" to ":propagule")))
 
     // Algorand SDK
     implementation("com.algorand:algosdk:2.4.0")

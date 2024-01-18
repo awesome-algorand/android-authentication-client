@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.algorand.algosdk.account.Account
 import com.google.android.gms.fido.fido2.api.common.PublicKeyCredential
-import foundation.algorand.auth.verify.Message
+import foundation.algorand.propagule.verify.Message
 
 /**
  * Demo View Model

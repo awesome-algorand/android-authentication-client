@@ -19,10 +19,10 @@ import com.google.android.gms.fido.fido2.api.common.AuthenticatorErrorResponse
 import com.google.android.gms.fido.fido2.api.common.PublicKeyCredential
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanner
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
-import foundation.algorand.auth.fido2.*
-import foundation.algorand.auth.verify.ConnectApi
-import foundation.algorand.auth.verify.Message
-import foundation.algorand.auth.verify.crypto.KeyPairs
+import foundation.algorand.propagule.fido2.*
+import foundation.algorand.propagule.verify.ConnectApi
+import foundation.algorand.propagule.verify.Message
+import foundation.algorand.propagule.verify.crypto.KeyPairs
 import foundation.algorand.demo.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
